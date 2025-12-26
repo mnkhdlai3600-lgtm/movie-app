@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import type { Movie } from "./Movies";
+
 import { Play } from "lucide-react";
 
 import {
@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { Movie } from "./Movies";
 
 type CarouselPluginProps = {
   results: Movie[];
@@ -35,10 +36,10 @@ export const CarouselPlugin = ({ results }: CarouselPluginProps) => {
           return (
             <CarouselItem key={movie.id} className="md:relative ">
               <img
-                className="w-screen md:max-h-150 object-cover object-center"
+                className="w-screen md:max-h-150 object-cover object-center overflow-clip"
                 src={` https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               />
-              <div className="hidden md:flex md:absolute md:z-50 md:top-44.5 md:right-245 md:left-35 md:text-gray-300  flex-col gap-4 top-">
+              <div className="hidden md:flex md:absolute md:z-50 md:top-[30%] md:right-[55%] md:left-[9%] md:text-white md:mix-blend-difference  flex-col gap-4 top-">
                 <p className="text-[16px]">Now Playing</p>
                 <p className="text-4xl font-bold">{movie.original_title}</p>
                 <div className="flex">

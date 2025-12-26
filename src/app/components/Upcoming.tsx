@@ -1,17 +1,25 @@
-import { Movie } from "../Movies";
+import Link from "next/link";
+import { Movie } from "./Movies";
 
 export const Upcoming = ({
   title,
-  results,
+  category,
+  movieResults,
 }: {
   title: string;
-  results: Movie[];
+  movieResults: Movie[];
+  category: string;
 }) => {
   return (
     <div className="flex flex-col gap-8">
-      <p className="text-[24px] font-semibold">{title}</p>
+      <div className="flex justify-between">
+        <p className="text-[24px] font-semibold">{title}</p>
+        <Link href={`/category/${category}`}>
+          <button>See more</button>
+        </Link>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8">
-        {results
+        {movieResults
           .map((films) => {
             return (
               <div
