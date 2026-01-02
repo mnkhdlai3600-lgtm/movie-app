@@ -1,4 +1,3 @@
-import category from "../category/[movieCategory]/page";
 import { CarouselPlugin } from "./Carousel";
 import { Upcoming } from "./Upcoming";
 export type Movie = {

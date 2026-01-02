@@ -1,8 +1,8 @@
 import { Film, Moon, Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { InputValue } from "./inputSearch/[inputValue]/InputValue";
-import { MovieGenre } from "./genres/[genresCategory]/ShadCNBut";
+import { InputValue } from "./components/InputValue";
+import { MovieGenre } from "./components/ShadCNBut";
 
 export const Header = () => {
   return (
@@ -11,11 +11,15 @@ export const Header = () => {
       <Link href="/">
         <div className=" gap-2 flex justify-between items-center">
           <Film className=" w-4.25 h-4.25 " />
-          <p className="text-indigo-700 text-[14px] font-bold">Movie Z</p>
+          <p className="text-indigo-700 text-[14px] font-bold italic">
+            Movie Z
+          </p>
         </div>
       </Link>
       <div className="hidden md:flex gap-3">
-        <MovieGenre />
+        <div className="">
+          <MovieGenre />
+        </div>
 
         <div>
           <InputValue />
