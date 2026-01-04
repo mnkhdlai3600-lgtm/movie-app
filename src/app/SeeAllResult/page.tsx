@@ -5,8 +5,8 @@ import { ChangeEvent, useState } from "react";
 import useSWR from "swr";
 import { Movie } from "../components/Movies";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChevronRight } from "lucide-react";
 import { GenreBUt } from "../components/GenreBUt";
+import Link from "next/link";
 
 export default function MovieResults() {
   const { push } = useRouter();
@@ -37,26 +37,28 @@ export default function MovieResults() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
             {searchData.slice(0, 5).map((films: Movie) => {
               return (
-                <div
-                  key={films.id}
-                  className="rounded-lg overflow-hidden shadow-lg "
-                >
-                  <img
-                    className="object-cover object-center "
-                    src={` https://image.tmdb.org/t/p/original${films.poster_path}`}
-                  />
-                  <div className="bg-gray-200 h-19 md:h-22.5 p-2">
-                    <div className="flex">
-                      <p className="text-[12px] md:text-[14px] flex items-center">
-                        ⭐️{films.vote_average}
-                      </p>
-                      <p className="opacity-50 text-[12px] flex items-center">
-                        /10
-                      </p>
+                <Link href={`/movieDetail?query=${films?.id}`}>
+                  <div
+                    key={films.id}
+                    className="rounded-lg overflow-hidden shadow-lg "
+                  >
+                    <img
+                      className="object-cover object-center "
+                      src={` https://image.tmdb.org/t/p/original${films.poster_path}`}
+                    />
+                    <div className="bg-gray-200 h-19 md:h-22.5 p-2">
+                      <div className="flex">
+                        <p className="text-[12px] md:text-[14px] flex items-center">
+                          ⭐️{films.vote_average}
+                        </p>
+                        <p className="opacity-50 text-[12px] flex items-center">
+                          /10
+                        </p>
+                      </div>
+                      <p>{films.original_title}</p>
                     </div>
-                    <p>{films.original_title}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

@@ -2,8 +2,7 @@
 import { Input } from "@/components/ui/input";
 import { Movie } from "@/app/components/Movies";
 import { fetcherInput } from "@/utils/fetcherInput";
-import { usePathname, useRouter } from "next/navigation";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import useSWR from "swr";
 import { ArrowRight, Loader2Icon } from "lucide-react";
 import Link from "next/link";
@@ -14,7 +13,6 @@ export const InputValue = () => {
     `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/search/movie?query=${searchValue}&language=en-US&page=1`,
     fetcherInput
   );
-  console.log(data);
   const searchData = data?.results || [];
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +66,7 @@ export const InputValue = () => {
                       <div className="items-end flex ">
                         <Link
                           className="flex text-[14px] items-center justify-center gap-2 font-medium "
-                          href={`/movieDetail?query=${searchValue}`}
+                          href={`/movieDetail?query=${searched.id}`}
                           onClick={() => setSearchValue("")}
                         >
                           See more <ArrowRight className="w-4 h-4 flex " />
