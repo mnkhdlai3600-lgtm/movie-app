@@ -25,7 +25,7 @@ export const GenreBUt = () => {
         {data?.genres.map((genre: Genre) => {
           return (
             <Link
-              href={`genrePage${genre.id}`}
+              href={`/genres?genre=${genre.id}`}
               key={genre.id}
               className="border border-solid border-gray-300 rounded-2xl text-[12px] font-semibold flex gap-2 justify-center items-center px-0.5 pr-1 pl-2.5"
             >

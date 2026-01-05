@@ -1,47 +1,33 @@
 "use client";
 
 import { fetcherInput } from "@/utils/fetcherInput";
-import { ChangeEvent, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import { Movie } from "../components/Movies";
-import { useRouter, useSearchParams } from "next/navigation";
-import { GenreBUt } from "../components/GenreBUt";
 import Link from "next/link";
+import { GenreBUt } from "../components/GenreBUt";
 
-export default function MovieResults() {
-  const { push } = useRouter();
-  const [searchValue, setSearchValue] = useState("");
+export default function page() {
   const searchParams = useSearchParams();
-
-  const searchValueFromUrl = searchParams.get("searchValue");
-
+  const genreIds = searchParams.get("genre");
   const { data, isLoading, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/search/movie?query=${searchValueFromUrl}&language=en-US&page=1`,
+    `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/discover/movie?language=en&with_genres=${genreIds}&page=1`,
     fetcherInput
   );
+  const genreData = data?.results || [];
+  console.log(genreData);
 
-  const searchData = data?.results || [];
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-    push(`/?query=$${event.target.value}`);
-  };
   return (
-    <div className="flex flex-col gap-8 justify-center items-start md:mx-20 mx-5 mt-13 mb-86">
+    <div className="flex flex-col gap-8 justify-center items-start mx-20 mt-13 mb-86">
       <h1 className="font-semibold text-3xl">Search results</h1>
-      <div className="flex md:justify-between gap-11 flex-col">
+      <GenreBUt />
+      <div className="flex justify-between gap-11">
         <div className="flex flex-col gap-8">
-          <p className="font-semibold text-[20px]">
-            {searchData.length} results for "{searchValueFromUrl}"
-          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-            {searchData.slice(0, 5).map((films: Movie) => {
+            {genreData.map((films: Movie) => {
               return (
-                <Link key={films.id} href={`/movieDetail?query=${films?.id}`}>
-                  <div
-                    key={films.id}
-                    className="rounded-lg overflow-hidden shadow-lg "
-                  >
+                <Link key={films.id} href={`/movieDetail?query=${films.id}`}>
+                  <div className="rounded-lg overflow-hidden shadow-lg ">
                     <img
                       className="object-cover object-center "
                       src={` https://image.tmdb.org/t/p/original${films.poster_path}`}
@@ -64,7 +50,6 @@ export default function MovieResults() {
           </div>
         </div>
         <div className="border-l-2 border-gray-100 "></div>
-        <GenreBUt />
       </div>
     </div>
   );

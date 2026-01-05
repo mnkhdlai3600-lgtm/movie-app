@@ -25,14 +25,14 @@ export const InputValue = () => {
         onChange={handleChange}
         placeholder="Search ..."
         value={searchValue}
-        className="w-94.75 border border-gray-200"
+        className="md:w-94.75 border border-gray-200"
       />
       {searchValue.length === 0 ? (
         <div hidden></div>
       ) : (
-        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg w-144.25 z-10 absolute bg-white top-13">
+        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg md:w-144.25 z-10 absolute bg-white  top-14">
           {isLoading ? (
-            <div className="flex justify-center items-center w-144.25">
+            <div className="flex justify-center items-center md:w-144.25 ">
               <Loader2Icon />
             </div>
           ) : searchData.length > 0 ? (
@@ -48,7 +48,7 @@ export const InputValue = () => {
                         />
                         <div className="flex flex-col justify-between">
                           <div>
-                            <div className="font-semibold text-[20px]">
+                            <div className="font-semibold md:text-[20px] text-[16px]">
                               {searched.title}
                             </div>
                             <div className=" flex items-center text-[14px] font-medium">
@@ -58,18 +58,19 @@ export const InputValue = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="font-medium">
+                          <div className="font-medium md:text-[20px] text-[14px]">
                             {searched.release_date}
                           </div>
                         </div>
                       </div>
-                      <div className="items-end flex ">
+                      <div className="items-end flex shrink-0">
                         <Link
                           className="flex text-[14px] items-center justify-center gap-2 font-medium "
                           href={`/movieDetail?query=${searched.id}`}
                           onClick={() => setSearchValue("")}
                         >
-                          See more <ArrowRight className="w-4 h-4 flex " />
+                          See more{" "}
+                          <ArrowRight className="w-4 h-4 flex text-[14px]" />
                         </Link>
                       </div>
                     </div>

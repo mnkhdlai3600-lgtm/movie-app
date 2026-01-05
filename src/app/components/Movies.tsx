@@ -42,7 +42,7 @@ export const Movies = async () => {
   const { results: topRatedMovie } = await movieAPi("top_rated");
 
   return (
-    <div className="flex justify-center flex-col">
+    <div className="flex justify-center flex-col mx-auto">
       <div className="p-5 md:px-20 mb-12.5 gap-8 flex flex-col">
         <CarouselPlugin results={popularMovie} />
         <Upcoming

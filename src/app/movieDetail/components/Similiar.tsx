@@ -14,9 +14,9 @@ export default function Similiar() {
   const searchData = data?.results || [];
 
   return (
-    <div>
-      <strong className="text-lg">Similar Movies:</strong>
-      <div className="grid grid-cols-5 gap-5">
+    <div className="flex flex-col gap-9 mb-28">
+      <strong className="text-2xl">More like this</strong>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
         {searchData
           .map((films: Movie) => {
             return (
@@ -41,7 +41,7 @@ export default function Similiar() {
               </Link>
             );
           })
-          .slice(0, 10)}
+          .slice(0, 5)}
       </div>
     </div>
   );

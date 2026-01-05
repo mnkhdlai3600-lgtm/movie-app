@@ -15,7 +15,7 @@ export function MovieGenre() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="border border-gray-200">
           {" "}
-          <ChevronDown /> Genres
+          <ChevronDown /> <span className="md:block hidden">Genres</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-white border-gray-50" align="start">

@@ -11,7 +11,7 @@ export const Upcoming = ({
   category: string;
 }) => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col mx-auto">
       <div className="flex justify-between">
         <p className="text-[24px] font-semibold">{title}</p>
         <Link href={`/category/${category}`}>
@@ -22,7 +22,8 @@ export const Upcoming = ({
         {movieResults
           .map((films) => {
             return (
-              <div
+              <Link
+                href={`/movieDetail?query=${films.id}`}
                 key={films.id}
                 className="rounded-lg overflow-hidden shadow-lg "
               >
@@ -41,7 +42,7 @@ export const Upcoming = ({
                   </div>
                   <p className="">{films.original_title}</p>
                 </div>
-              </div>
+              </Link>
             );
           })
           .slice(0, 10)}
