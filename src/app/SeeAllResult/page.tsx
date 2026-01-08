@@ -22,14 +22,10 @@ export default function MovieResults() {
 
   const searchData = data?.results || [];
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-    push(`/?query=$${event.target.value}`);
-  };
   return (
-    <div className="flex flex-col gap-8 justify-center items-start md:mx-20 mx-5 mt-13 mb-86">
+    <div className="flex flex-col gap-8 justify-center items-start md:mx-20 mx-5 mt-13 md:mb-86 mb-8">
       <h1 className="font-semibold text-3xl">Search results</h1>
-      <div className="flex md:justify-between gap-11 flex-col">
+      <div className="flex md:justify-between gap-11 md:flex-row flex-col">
         <div className="flex flex-col gap-8">
           <p className="font-semibold text-[20px]">
             {searchData.length} results for "{searchValueFromUrl}"

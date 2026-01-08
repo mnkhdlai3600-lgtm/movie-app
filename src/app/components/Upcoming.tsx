@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Movie } from "./Movies";
+import { ArrowRight } from "lucide-react";
+import { UtubeBut } from "./UtubeBut";
 
 export const Upcoming = ({
   title,
@@ -11,14 +13,16 @@ export const Upcoming = ({
   category: string;
 }) => {
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="p-5 md:px-20 mb-12.5 gap-8 flex flex-col">
       <div className="flex justify-between">
-        <p className="text-[24px] font-semibold">{title}</p>
+        <p className="text-[24px] font-semibold">{title}:</p>
         <Link href={`/category/${category}`}>
-          <button>See more</button>
+          <button className="flex gap-2 justify-center items-center">
+            See more <ArrowRight className="w-4 h-4" />
+          </button>
         </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8 ">
         {movieResults
           .map((films) => {
             return (
@@ -28,7 +32,7 @@ export const Upcoming = ({
                 className="rounded-lg overflow-hidden shadow-lg "
               >
                 <img
-                  className="object-cover object-center md:min-h-85 min-h-58.5"
+                  className="object-cover object-center"
                   src={` https://image.tmdb.org/t/p/original${films.poster_path}`}
                 />
                 <div className="bg-gray-200 h-19 md:h-22.5 p-2">

@@ -41,7 +41,7 @@ export default function Similiar() {
               </Link>
             );
           })
-          .slice(0, 5)}
+          .slice(0, 10)}
       </div>
     </div>
   );

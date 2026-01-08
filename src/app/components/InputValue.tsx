@@ -4,7 +4,7 @@ import { Movie } from "@/app/components/Movies";
 import { fetcherInput } from "@/utils/fetcherInput";
 import { ChangeEvent, useState } from "react";
 import useSWR from "swr";
-import { ArrowRight, Loader2Icon } from "lucide-react";
+import { ArrowRight, Loader2Icon, X } from "lucide-react";
 import Link from "next/link";
 
 export const InputValue = () => {
@@ -25,12 +25,13 @@ export const InputValue = () => {
         onChange={handleChange}
         placeholder="Search ..."
         value={searchValue}
-        className="md:w-94.75 border border-gray-200"
+        className="md:w-94.75 w-full md:border md:border-gray-200 border-0 pl-8"
       />
+
       {searchValue.length === 0 ? (
         <div hidden></div>
       ) : (
-        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg md:w-144.25 z-10 absolute bg-white  top-14">
+        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg md:w-144.25  absolute top-13 bg-white left-1/2 translate-x-[-50%] min-w-83.75 z-100">
           {isLoading ? (
             <div className="flex justify-center items-center md:w-144.25 ">
               <Loader2Icon />

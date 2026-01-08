@@ -16,7 +16,7 @@ export const GenreBUt = () => {
   );
   return (
     <div className="p-5 max-w-144.75">
-      <div className="flex w-fit  flex-wrap gap-4">
+      <div className="flex w-fit flex-wrap gap-4">
         <div>
           <h1 className="text-2xl font-semibold">Genres</h1>
           <p>See lists of movies by genre</p>

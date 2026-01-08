@@ -1,18 +1,16 @@
-"use client";
-import YouTube from "react-youtube";
-import useSWR from "swr";
-import { useSearchParams } from "next/navigation";
-import { fetcherInput } from "@/utils/fetcherInput";
-import Similiar from "./components/Similiar";
-import MovieTeams from "./components/MovieTeams";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import RespoDetail from "./components/RespoDetail";
-import { UtubeBut } from "../components/UtubeBut";
+import { fetcherInput } from "@/utils/fetcherInput";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import useSWR from "swr";
+import MovieTeams from "./MovieTeams";
+import Similiar from "./Similiar";
+import { UtubeBut } from "@/app/components/UtubeBut";
 
-export default function Page() {
+export default function RespoDetail() {
   const searchParams = useSearchParams();
   const movieId = searchParams.get("query");
+
   const { data, error, isLoading } = useSWR(
     movieId
       ? [
@@ -35,8 +33,8 @@ export default function Page() {
   );
 
   return (
-    <div className="px-5 md:px-10 py-5 space-y-6 md:mx-45">
-      <div className="hidden md:flex flex-col gap-8">
+    <div>
+      <div className="flex flex-col gap-4">
         <div className="flex flex-row justify-between md:items-center gap-4">
           <div>
             <p className="font-bold md:text-4xl text-2xl">{movieData?.title}</p>
@@ -45,6 +43,7 @@ export default function Page() {
               {movieData?.runtime % 60}m
             </p>
           </div>
+
           <div className="text-right">
             <p className="text-[12px] font-medium text-gray-500">Rating</p>
             <div className="flex items-center gap-2 mt-1">
@@ -61,47 +60,47 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="flex gap-8 md:gap-0">
-          <div className="flex gap-8 w-full md:flex-row flex-col-reverse">
-            <img
-              className="w-2/8 object-cover rounded-lg shadow-md"
-              src={`https://image.tmdb.org/t/p/original${movieData?.poster_path}`}
-              alt="Poster"
-            />
-            {trailer ? (
-              <div className="w-full md:w-4/6 object-center object-cover">
-                <div className="absolute top-165 z-20 right-280">
-                  {trailerKey && <UtubeBut movieId={movieData.id} />}
-                </div>
-                <div className="relative">
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`}
-                    className="h-full"
-                  />
-                  <div className="bg-black opacity-50 w-full h-full z-10 absolute top-0"></div>
-                </div>
+        <div className="flex gap-8 w-full md:flex-row flex-col-reverse">
+          {trailer ? (
+            <div className="w-full md:w-4/6 object-center object-cover relative">
+              <div className="absolute top-37 z-90 left-2">
+                {trailerKey && <UtubeBut movieId={movieData.id} />}
               </div>
-            ) : (
-              <div className="w-full md:w-160 h-60 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg">
-                <p className="text-gray-500">No trailer available</p>
+              <div className="relative">
+                <img
+                  src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`}
+                  className="h-full"
+                />
+                <div className="bg-black opacity-50 w-full h-full z-10 absolute top-0"></div>
               </div>
-            )}
+            </div>
+          ) : (
+            <div className="w-full md:w-160 h-60 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg">
+              <p className="text-gray-500">No trailer available</p>
+            </div>
+          )}
+        </div>
+        <div className="flex gap-8.5">
+          <img
+            className="w-25 h-37 object-cover rounded-lg shadow-md"
+            src={`https://image.tmdb.org/t/p/original${movieData?.poster_path}`}
+            alt="Poster"
+          />
+          <div>
+            {" "}
+            <div className="flex flex-wrap gap-2 text-[12px]">
+              {movieData?.genres?.map((g: any) => (
+                <Link key={g.id} href={`/genres?genre=${g.id}`}>
+                  <Badge variant="outline">{g.name}</Badge>
+                </Link>
+              ))}
+            </div>
+            <p className="text-gray-700 text-[16px]">{movieData?.overview}</p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {movieData?.genres?.map((g: any) => (
-            <Link key={g.id} href={`/genres?genre=${g.id}`}>
-              <Badge variant="outline">{g.name}</Badge>
-            </Link>
-          ))}
-        </div>
-        <p className="text-gray-700 text-base">{movieData?.overview}</p>
         <MovieTeams />
         <Similiar />
       </div>
-      <div className="block md:hidden">
-        <RespoDetail />
-      </div>{" "}
     </div>
   );
 }
