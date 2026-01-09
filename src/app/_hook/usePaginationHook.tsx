@@ -19,9 +19,6 @@ export const usePaginationHook = () => {
   const HandleChange = (pageNumber: number) => () => {};
 
   return {
-    router,
-    pathName,
-    searchParams,
     tenPages,
     handlePrevious,
     handleNext,

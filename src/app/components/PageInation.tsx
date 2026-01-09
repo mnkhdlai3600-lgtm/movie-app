@@ -10,16 +10,9 @@ import {
 } from "@/components/ui/pagination";
 import { usePaginationHook } from "../_hook/usePaginationHook";
 
-export function DynamicPagination({ totalPage }: PaginationProps) {
-  const {
-    router,
-    pathName,
-    searchParams,
-    TotalPages,
-    handlePrevious,
-    handleNext,
-    HandleChange,
-  };
+export function DynamicPagination() {
+  const { tenPages, handlePrevious, handleNext, HandleChange } =
+    usePaginationHook();
   return (
     <Pagination>
       <PaginationContent>
