@@ -31,7 +31,7 @@ export const InputValue = () => {
       {searchValue.length === 0 ? (
         <div hidden></div>
       ) : (
-        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg md:w-144.25  absolute top-13 bg-white left-1/2 translate-x-[-50%] min-w-83.75 z-100">
+        <div className="border gap-4 p-5 flex flex-col border-solid  border-gray-200 rounded-lg md:w-144.25  absolute md:top-13 top-15 bg-white left-1/2 translate-x-[-50%] min-w-83.75 z-100">
           {isLoading ? (
             <div className="flex justify-center items-center md:w-144.25 ">
               <Loader2Icon />

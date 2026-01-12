@@ -3,9 +3,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogFooter,
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -39,8 +37,6 @@ export function UtubeBut({ movieId }: UtubeButProps) {
     width: "100%",
     playerVars: { autoplay: 1 },
   };
-
-  console.log(data);
 
   if (isLoading) return <p>Loading trailer...</p>;
   if (error) return <p>Failed to load trailer</p>;

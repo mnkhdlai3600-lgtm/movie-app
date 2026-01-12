@@ -1,5 +1,8 @@
+"use client";
+
 import { Movie } from "@/app/components/Movies";
 import { fetcherInput } from "@/utils/fetcherInput";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
@@ -15,9 +18,21 @@ export default function Similiar() {
 
   return (
     <div className="flex flex-col gap-9 mb-28">
-      <strong className="text-2xl">More like this</strong>
+      <div className="flex justify-between">
+        <strong className="text-2xl">More like this</strong>
+        <Link
+          href={`/MoreLikeThis?query=${movieId}`}
+          className="flex gap-2 justify-center items-center"
+        >
+          See more <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
         {searchData
+          .slice(
+            0,
+            typeof window !== "undefined" && window.innerWidth < 768 ? 2 : 5
+          )
           .map((films: Movie) => {
             return (
               <Link key={films.id} href={`/movieDetail?query=${films.id}`}>
@@ -40,8 +55,7 @@ export default function Similiar() {
                 </div>
               </Link>
             );
-          })
-          .slice(0, 10)}
+          })}
       </div>
     </div>
   );

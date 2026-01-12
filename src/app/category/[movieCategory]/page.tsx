@@ -24,7 +24,7 @@ export default async function category({
     : "Top rated";
 
   return (
-    <div className="p-5 md:px-20 mb-12.5 gap-8 flex flex-col">
+    <div className="p-5 md:px-40 mb-12.5 gap-8 flex flex-col">
       <p className="text-[24px] font-semibold">{title}</p>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8">
         {movies.results.map((films) => {

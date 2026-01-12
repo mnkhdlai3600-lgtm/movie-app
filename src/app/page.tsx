@@ -27,7 +27,7 @@ export default async function Home() {
   const { results: nowPlayingMovie } = await movieAPI("now_playing");
 
   return (
-    <div className="flex flex-col items-center inter-">
+    <div className="flex flex-col items-center">
       <div className={` w-screen ${inter.variable}`}>
         <Movies
           nowPlayingMovie={nowPlayingMovie}

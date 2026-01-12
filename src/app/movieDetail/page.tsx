@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import RespoDetail from "./components/RespoDetail";
 import { UtubeBut } from "../components/UtubeBut";
+import { DynamicPagination } from "../components/PageInation";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -35,7 +36,7 @@ export default function Page() {
   );
 
   return (
-    <div className="px-5 md:px-10 py-5 space-y-6 md:mx-45">
+    <div className="px-5 md:px-10 py-5 md:mx-45">
       <div className="hidden md:flex flex-col gap-8">
         <div className="flex flex-row justify-between md:items-center gap-4">
           <div>
@@ -70,15 +71,15 @@ export default function Page() {
             />
             {trailer ? (
               <div className="w-full md:w-4/6 object-center object-cover">
-                <div className="absolute top-165 z-20 right-280">
-                  {trailerKey && <UtubeBut movieId={movieData.id} />}
-                </div>
                 <div className="relative">
                   <img
                     src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`}
                     className="h-full"
                   />
                   <div className="bg-black opacity-50 w-full h-full z-10 absolute top-0"></div>
+                  <div className="absolute bottom-6 z-20 left-6 ">
+                    {trailerKey && <UtubeBut movieId={movieData.id} />}
+                  </div>
                 </div>
               </div>
             ) : (

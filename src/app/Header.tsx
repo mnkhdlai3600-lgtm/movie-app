@@ -56,7 +56,7 @@ export const Header = () => {
       </div>
 
       {openInput && (
-        <div className="md:hidden w-full flex items-center justify-between px-5 py-4.75 md:px-20 md:py-2.75">
+        <div className="md:hidden w-full flex items-center justify-between px-5 py-4.75 md:px-20 md:py-2.75 ">
           <MovieGenre />
           <div>
             <Search className="text-gray-400 w-4 h-4 absolute ml-2 top-7" />

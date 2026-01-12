@@ -17,7 +17,7 @@ export function MovieGenre() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // 🔥 hydration fix
+  if (!mounted) return null;
 
   return (
     <DropdownMenu>

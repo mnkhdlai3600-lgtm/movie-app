@@ -63,15 +63,15 @@ export default function RespoDetail() {
         <div className="flex gap-8 w-full md:flex-row flex-col-reverse">
           {trailer ? (
             <div className="w-full md:w-4/6 object-center object-cover relative">
-              <div className="absolute top-37 z-90 left-2">
-                {trailerKey && <UtubeBut movieId={movieData.id} />}
-              </div>
               <div className="relative">
                 <img
                   src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`}
                   className="h-full"
                 />
                 <div className="bg-black opacity-50 w-full h-full z-10 absolute top-0"></div>
+                <div className="absolute bottom-6 z-20 left-6 ">
+                  {trailerKey && <UtubeBut movieId={movieData.id} />}
+                </div>
               </div>
             </div>
           ) : (
@@ -80,15 +80,14 @@ export default function RespoDetail() {
             </div>
           )}
         </div>
-        <div className="flex gap-8.5">
+        <div className="flex gap-8.5 ">
           <img
             className="w-25 h-37 object-cover rounded-lg shadow-md"
             src={`https://image.tmdb.org/t/p/original${movieData?.poster_path}`}
             alt="Poster"
           />
-          <div>
-            {" "}
-            <div className="flex flex-wrap gap-2 text-[12px]">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-wrap gap-2 text-[12px] ">
               {movieData?.genres?.map((g: any) => (
                 <Link key={g.id} href={`/genres?genre=${g.id}`}>
                   <Badge variant="outline">{g.name}</Badge>

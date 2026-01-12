@@ -12,7 +12,7 @@ export const Upcoming = ({
   category: string;
 }) => {
   return (
-    <div className="p-5 mb-12.5 gap-8 flex flex-col">
+    <div className="flex flex-col gap-8">
       <div className="flex justify-between">
         <p className="text-[24px] font-semibold">{title}:</p>
         <Link href={`/category/${category}`}>

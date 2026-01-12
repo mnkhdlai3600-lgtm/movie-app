@@ -7,13 +7,11 @@ import { Movie } from "../components/Movies";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Link from "next/link";
-import GenreBut from "../components/GenreBUt";
+import GenreBut from "../components/GenreBut";
+import { DynamicPagination } from "../components/PageInation";
 
 export default function MovieResults() {
-  const { push } = useRouter();
-  const [searchValue, setSearchValue] = useState("");
   const searchParams = useSearchParams();
-
   const searchValueFromUrl = searchParams.get("searchValue");
 
   const { data, isLoading, error } = useSWR(
@@ -24,7 +22,7 @@ export default function MovieResults() {
   const searchData = data?.results || [];
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-start md:mx-20 mx-5 mt-13 md:mb-86 mb-8">
+    <div className="flex flex-col gap-8 justify-center items-start md:mx-20 mx-5 md:mb-86 mb-8">
       <h1 className="font-semibold text-3xl">Search results</h1>
       <div className="flex md:justify-between gap-11 md:flex-row flex-col">
         <div className="flex flex-col gap-8">
@@ -32,7 +30,7 @@ export default function MovieResults() {
             {searchData.length} results for "{searchValueFromUrl}"
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-            {searchData.slice(0, 5).map((films: Movie) => {
+            {searchData.map((films: Movie) => {
               return (
                 <Link key={films.id} href={`/movieDetail?query=${films?.id}`}>
                   <div
@@ -59,6 +57,7 @@ export default function MovieResults() {
               );
             })}
           </div>
+          <DynamicPagination />
         </div>
         <div className="border-l-2 border-gray-100 "></div>
         <GenreBut />
