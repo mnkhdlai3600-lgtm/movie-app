@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -16,43 +17,60 @@ export function DynamicPagination() {
     handlePrevious,
     handleNext,
     handlePageChange,
-    getDisplayPages,
     totalPages,
     displayPages,
-    maxButtons,
     currentPage,
   } = usePaginationHook();
+
   return (
     <Pagination className="w-full flex justify-end items-end">
       <PaginationContent>
         {currentPage > 1 && (
           <PaginationItem>
-            <PaginationPrevious onClick={handlePrevious} href="#" />
+            <PaginationPrevious
+              onClick={(e) => {
+                e.preventDefault();
+                handlePrevious();
+              }}
+              href=""
+            />
           </PaginationItem>
         )}
+
         {displayPages.map((pageNum) => (
           <PaginationItem key={pageNum}>
             <PaginationLink
-              onClick={handlePageChange(pageNum)}
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                handlePageChange(pageNum)();
+              }}
               className={cn(
                 "cursor-pointer",
-                pageNum === currentPage && "bg-gray-200"
+                pageNum === currentPage &&
+                  "bg-gray-200 font-semibold pointer-events-none"
               )}
-              href="#"
             >
               {pageNum}
             </PaginationLink>
           </PaginationItem>
         ))}
 
-        {currentPage < totalPages && (
+        {currentPage < totalPages - 1 && (
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
         )}
+
         {currentPage < totalPages && (
           <PaginationItem>
-            <PaginationNext onClick={handleNext} href="#" />
+            <PaginationNext
+              onClick={(e) => {
+                e.preventDefault();
+                handleNext();
+              }}
+              href=""
+            />
           </PaginationItem>
         )}
       </PaginationContent>

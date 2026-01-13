@@ -21,7 +21,7 @@ export const Upcoming = ({
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8 ">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-8  ">
         {movieResults
           .map((films) => {
             return (

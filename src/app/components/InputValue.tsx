@@ -87,8 +87,14 @@ export const InputValue = () => {
               </Link>
             </>
           ) : (
-            <div className="flex flex-col gap-8 ">
-              <p className="flex justify-center">No results found.</p>
+            <div className="flex flex-col gap-8">
+              <p className="flex justify-center">No results found. </p>
+              <Link
+                href={`/SeeAllResult?searchValue=${searchValue}`}
+                onClick={() => setSearchValue("")}
+              >
+                <div>See all results for "{searchValue}"</div>
+              </Link>
             </div>
           )}
         </div>

@@ -39,11 +39,8 @@ export const GenreBut = () => {
     router.push(`/genres?genre=${newSelect.join(",")}`);
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading genres</div>;
-
   return (
-    <div className="flex flex-wrap gap-4 md:w-144.25 w-83.75 p-5">
+    <div className="flex flex-wrap gap-4 md:w-144.25 w-83.75 p-5 ">
       <div>
         <h1 className="text-2xl font-semibold">Genres</h1>
         <p>See lists of movies by genre</p>
