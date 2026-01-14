@@ -36,7 +36,7 @@ export const Header = () => {
             className={` w-4 h-4 ${openInput ? "block" : "hidden"}`}
           />
         </div>
-        <div className="flex gap-3 ">
+        <div className="flex gap-3">
           <Button
             variant="outline"
             className={` border-gray-300 md:hidden ${

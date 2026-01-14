@@ -35,11 +35,8 @@ export default function MovieDetailWrapper() {
     (v: any) => v.type === "Trailer" && v.site === "YouTube"
   );
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading movie</p>;
-
   return (
-    <div className="px-5 md:px-10 py-5 md:mx-45">
+    <div className="px-5 md:mx-30">
       <div className="hidden md:flex flex-col gap-8">
         <div className="flex flex-row justify-between md:items-center gap-4">
           <div>
@@ -73,7 +70,7 @@ export default function MovieDetailWrapper() {
               alt="Poster"
             />
             {trailer ? (
-              <div className="w-full md:w-4/6 object-center object-cover">
+              <div className="w-full md:w-fit overflow-hidden rounded-lg object-center object-cover">
                 <div className="relative">
                   <img
                     src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`}

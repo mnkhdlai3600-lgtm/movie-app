@@ -27,10 +27,8 @@ export function MovieResultsWrapper() {
   const searchData = data?.results || [];
   const totalPages = Math.min(data?.total_pages || 1, 10);
 
-  // 👉 НЭМЭГДСЭН: genre state
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
 
-  // 👉 НЭМЭГДСЭН: genre-аар filter
   const filteredMovies =
     selectedGenres.length === 0
       ? searchData
@@ -39,7 +37,7 @@ export function MovieResultsWrapper() {
         );
 
   return (
-    <div className="flex gap-8 justify-center md:mx-20 mx-5 mb-8 min-h-screen">
+    <div className="flex gap-8 justify-center md:mx-20 mx-5 mb-8 min-h-screen md:flex-row flex-col">
       <div className="flex-1 flex flex-col gap-8">
         <h1 className="font-semibold text-3xl">Search results</h1>
 
@@ -85,8 +83,7 @@ export function MovieResultsWrapper() {
       </div>
 
       <div className="border-l-2 border-gray-100 shrink-0" />
-
-      <div className="">
+      <div>
         <MovieResultBut
           selectedGenres={selectedGenres}
           onChange={setSelectedGenres}

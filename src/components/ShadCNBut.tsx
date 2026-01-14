@@ -27,7 +27,10 @@ export function MovieGenre() {
           <span className="md:block hidden">Genres</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white border-gray-50" align="start">
+      <DropdownMenuContent
+        className="bg-white border-gray-50 p-5 max-w-144.25"
+        align="start"
+      >
         <GenreBut />
       </DropdownMenuContent>
     </DropdownMenu>

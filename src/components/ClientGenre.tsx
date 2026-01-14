@@ -40,7 +40,7 @@ export default function GenreMoviesWrapper() {
   if (error) return <p>Error loading movies</p>;
 
   return (
-    <div className="flex flex-col gap-8 justify-center md:mx-40 md:mt-13 md:mb-10 m-5 md:flex-row">
+    <div className="flex flex-col gap-8 justify-center md:mx-30 md:mt-13 md:mb-10 m-5 md:flex-row">
       <div className="shrink">
         <h1 className="font-semibold text-3xl">Search filter</h1>
         <GenreBut />

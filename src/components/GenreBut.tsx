@@ -40,7 +40,7 @@ export const GenreBut = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 md:w-144.25 w-83.75 p-5 ">
+    <div className="flex flex-wrap md:shrink-0 w-76 md:w-full gap-4">
       <div>
         <h1 className="text-2xl font-semibold">Genres</h1>
         <p>See lists of movies by genre</p>

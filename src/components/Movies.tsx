@@ -41,7 +41,7 @@ export const Movies = ({
   return (
     <div className="md:flex flex-col gap-13 ">
       <CarouselPlugin results={nowPlayingMovie} />
-      <div className="md:px-40 flex flex-col gap-13 px-5">
+      <div className="md:px-30 flex flex-col gap-13 px-5">
         <Upcoming
           title="Upcoming"
           movieResults={popularMovie}

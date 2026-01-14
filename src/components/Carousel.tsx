@@ -105,7 +105,7 @@ export const CarouselPlugin = ({ results }: CarouselPluginProps) => {
           );
         })}
       </CarouselContent>
-      <CarouselPrevious className="md:absolute z-20 hidden md:flex text-white md:w-10 md:h-10 left-10" />
+      <CarouselPrevious className="md:absolute z-20 hidden md:flex text-white md:w-10 md:h-10 left-10 " />
       <CarouselNext className="md:absolute z-20 hidden md:flex text-white md:w-10 md:h-10 right-10" />
     </Carousel>
   );

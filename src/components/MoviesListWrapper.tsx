@@ -25,7 +25,7 @@ export default function MoviesListWrapper() {
   if (error) return <p>Error loading movies</p>;
 
   return (
-    <div className="md:mx-40 mx-5 flex flex-col gap-8 mt-8">
+    <div className="md:mx-30 mx-5 flex flex-col gap-8 mt-8">
       <strong className="text-2xl">More like this</strong>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
         {movies.map((movie: Movie) => (

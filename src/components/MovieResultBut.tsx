@@ -23,7 +23,6 @@ export default function MovieResultBut({
     `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/genre/movie/list?language=en`,
     fetcherInput
   );
-
   const handleToggle = (id: number) => {
     const updated = selectedGenres.includes(id)
       ? selectedGenres.filter((g) => g !== id)
@@ -33,7 +32,7 @@ export default function MovieResultBut({
   };
 
   return (
-    <div className=" ">
+    <div className="w-96.75 flex flex-wrap gap-4">
       <div className="w-full">
         <h1 className="text-2xl font-semibold">Genres</h1>
         <p className="text-sm text-gray-500">Filter search results by genre</p>
